@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 actor = Actor.new({ first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock" })
 actor.save
+
+movie = Movie.create(title: "Jumanji", year: 1995, plot: "magic gameboard comes to life")
+
+movie = Movie.create(title: "The Indian in the Cupboard", year: 1995, plot: "an old wooden cupboard brings plastic figurines to life and teaches Omri a lesson on the value of his toys")
