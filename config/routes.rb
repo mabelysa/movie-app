@@ -8,11 +8,5 @@ Rails.application.routes.draw do
 
   get "moviesone_path" => "movies#movies_one"
 
-  get "movies" => "movies#movies_two"
-
-  get "movies" => "movies#movies_three"
-
-  get "movies" => "movies#movies_four"
-
-  get "movies" => "movies#movies_five"
+  get "moviestwo_path" => "movies#movies_two"
 end
