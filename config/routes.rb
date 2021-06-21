@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   get "moviesone_path" => "movies#movies_one"
 
   get "moviestwo_path" => "movies#movies_two"
+
+  get "/actor_query" => "actors#query_params"
+
+  get "/actor_segment/:last_name" => "actors#segment_params"
+
+  post "/actor_body" => "actors#body_params"
 end
