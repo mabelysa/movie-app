@@ -24,6 +24,8 @@ class MoviesController < ApplicationController
       title: params["title"],
       year: params["year"],
       plot: params["plot"],
+      director: params["director"],
+      english: params["english"],
     )
     movies.save
     render json: movies.as_json
@@ -41,6 +43,8 @@ class MoviesController < ApplicationController
     movies.title = params["title"] || movies.title
     movies.year = params["year"] || movies.year
     movies.plot = params["plot"] || movies.plot
+    movies.director = params["director"] || movies.director
+    movies.english = params["english"] || movies.english
     movies.save
     render json: movies.as_json
   end
@@ -49,7 +53,6 @@ class MoviesController < ApplicationController
     movies_id = params[:id]
     movies = Movie.find_by(id: movies_id)
     movies.destroy
-    render json: {message: "Your movie is no more!"}
+    render json: { message: "Your movie is no more!" }
   end
-
 end

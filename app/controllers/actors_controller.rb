@@ -37,6 +37,9 @@ class ActorsController < ApplicationController
       first_name: params["first_name"],
       last_name: params["last_name"],
       known_for: params["known_for"],
+      gender: params["gender"],
+      age: params["age"],
+      views: params["views"],
     )
     actors.save
     render json: actors.as_json
@@ -54,7 +57,10 @@ class ActorsController < ApplicationController
     actors.first_name = params["first_name"] || actors.first_name
     actors.last_name = params["last_name"] || actors.last_name
     actors.known_for = params["known_for"] || actors.known_for
+    actors.gender = params["gender"] || actors.gender
+    actors.age = params["age"] || actors.age
     actors.save
+    actors.views = params["views"] || actors.views
     render json: actors.as_json
   end
 
@@ -62,6 +68,6 @@ class ActorsController < ApplicationController
     actors_id = params[:id]
     actors = Actor.find_by(id: actors_id)
     actors.destroy
-    render json: {message: "Your contact is no more!"}
+    render json: { message: "Your contact is no more!" }
   end
 end
