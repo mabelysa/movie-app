@@ -30,7 +30,8 @@ class MoviesController < ApplicationController
     if movies.save
       render json: movies.as_json
     else
-      render json: {errors: movie.errors.full_messages}, status: unprocessable_entity
+      render json: {errors: movie.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -50,7 +51,8 @@ class MoviesController < ApplicationController
     if movies.save
       render json: movies.as_json
     else
-      render json: {errors: movie.errors.full_messages}, status: 
+      render json: {errors: movie.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def destroy

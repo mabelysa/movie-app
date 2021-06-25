@@ -68,6 +68,7 @@ class ActorsController < ApplicationController
       render json: actors.as_json
     else
       render json: {errors: actor.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def destroy
