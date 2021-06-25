@@ -41,8 +41,11 @@ class ActorsController < ApplicationController
       age: params["age"],
       views: params["views"],
     )
-    actors.save
-    render json: actors.as_json
+    if actors.save
+      render json: actors.as_json
+    else
+      render json: { errors: actor.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -61,7 +64,10 @@ class ActorsController < ApplicationController
     actors.age = params["age"] || actors.age
     actors.save
     actors.views = params["views"] || actors.views
-    render json: actors.as_json
+    if actor.save
+      render json: actors.as_json
+    else
+      render json: {errors: actor.errors.full_messages}, status: :unprocessable_entity
   end
 
   def destroy

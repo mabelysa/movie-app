@@ -27,8 +27,10 @@ class MoviesController < ApplicationController
       director: params["director"],
       english: params["english"],
     )
-    movies.save
-    render json: movies.as_json
+    if movies.save
+      render json: movies.as_json
+    else
+      render json: {errors: movie.errors.full_messages}, status: unprocessable_entity
   end
 
   def show
@@ -45,8 +47,10 @@ class MoviesController < ApplicationController
     movies.plot = params["plot"] || movies.plot
     movies.director = params["director"] || movies.director
     movies.english = params["english"] || movies.english
-    movies.save
-    render json: movies.as_json
+    if movies.save
+      render json: movies.as_json
+    else
+      render json: {errors: movie.errors.full_messages}, status: 
   end
 
   def destroy
