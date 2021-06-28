@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
   # end
 
   def index
-    movies = Movie.all
+    movies = Movie.where(english: true)
     render json: movies.as_json
   end
 
@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     if movies.save
       render json: movies.as_json
     else
-      render json: {errors: movie.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: movies.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
     if movies.save
       render json: movies.as_json
     else
-      render json: {errors: movie.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: movies.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

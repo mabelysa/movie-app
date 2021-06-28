@@ -28,7 +28,7 @@ class ActorsController < ApplicationController
   # end
 
   def index
-    actors = Actor.all
+    actors = Actor.all.order(age: :desc)
     render json: actors.as_json
   end
 
@@ -44,7 +44,7 @@ class ActorsController < ApplicationController
     if actors.save
       render json: actors.as_json
     else
-      render json: { errors: actor.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: actors.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -64,10 +64,10 @@ class ActorsController < ApplicationController
     actors.age = params["age"] || actors.age
     actors.save
     actors.views = params["views"] || actors.views
-    if actor.save
+    if actors.save
       render json: actors.as_json
     else
-      render json: {errors: actor.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: actors.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
