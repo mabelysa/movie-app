@@ -40,9 +40,11 @@ class ActorsController < ApplicationController
       gender: params["gender"],
       age: params["age"],
       views: params["views"],
+      movie_id: params["movie_id"],
     )
     if actors.save
-      render json: actors.as_json
+      render json: actors
+      #as_json
     else
       render json: { errors: actors.errors.full_messages }, status: :unprocessable_entity
     end
@@ -64,6 +66,7 @@ class ActorsController < ApplicationController
     actors.age = params["age"] || actors.age
     actors.save
     actors.views = params["views"] || actors.views
+    actors.movie_id = params["movie_id"] || actors.movie_id
     if actors.save
       render json: actors.as_json
     else
