@@ -53,7 +53,8 @@ class ActorsController < ApplicationController
   def show
     actors_id = params[:id]
     actors = Actor.find(actors_id)
-    render json: actors.as_json
+    render json: actors
+    #as_json
   end
 
   def update
