@@ -26,10 +26,15 @@ class ActorsController < ApplicationController
   #   actor = Actor.find_by(first_name: input)
   #   render json: { first_name: actor}
   # end
+  before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    actors = Actor.all.order(age: :desc)
-    render json: actors.as_json
+    if current_user
+      actors = Actor.all.order(age: :desc)
+      render json: actors.as_json
+    else
+      render json: []
+    end
   end
 
   def create
