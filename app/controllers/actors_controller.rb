@@ -31,7 +31,8 @@ class ActorsController < ApplicationController
   def index
     if current_user
       actors = Actor.all.order(age: :desc)
-      render json: actors.as_json
+      render json: actors
+      # .as_json
     else
       render json: []
     end
