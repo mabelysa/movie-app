@@ -16,10 +16,4 @@ class Movie < ApplicationRecord
     end
     p genre_array
   end
-
-  # def genre_names
-  #   genres.map do |genre|
-  #     genres.movie
-  #   end
-  # end
 end
