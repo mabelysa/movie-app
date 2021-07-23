@@ -28,15 +28,15 @@ Rails.application.routes.draw do
   delete "/actor/:id" => "actors#destroy"
   #========Movies - RESTful actions================
 
-  get "/movie" => "movies#index"
+  get "/movies" => "movies#index"
 
-  post "/movie" => "movies#create"
+  post "/movies" => "movies#create"
 
-  get "/movie/:id" => "movies#show"
+  get "/movies/:id" => "movies#show"
 
-  patch "movie/:id" => "movies#update"
+  patch "movies/:id" => "movies#update"
 
-  delete "movie/:id" => "movies#destroy"
+  delete "movies/:id" => "movies#destroy"
 
   post "/users" => "users#create"
 

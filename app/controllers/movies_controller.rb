@@ -13,10 +13,12 @@ class MoviesController < ApplicationController
   #   movie = Movie.find_by(title: "Hocus Pocus")
   #   render json: movie.as_json
   # end
+
   before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    movies = Movie.where(english: true)
+    movies = Movie.all
+    # movies = Movie.where(english: true)
     render json: movies
     # .as_json
   end

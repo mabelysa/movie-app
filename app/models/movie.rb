@@ -4,8 +4,10 @@ class Movie < ApplicationRecord
   has_many :genres, through: :movie_genres
 
   validates :year, numericality: { only_integer: true }
-  validates :title, :plot, :director, presence: true
-  validates :title, :plot, :director, uniqueness: true
+  validates :title, :plot, presence: true
+  # :director
+  validates :title, :plot, uniqueness: true
+  # :director
 
   def genre_names
     genre_array = []
